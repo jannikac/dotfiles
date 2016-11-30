@@ -74,14 +74,16 @@ fi
 
 # Variables
 USER="$(whoami)"
+HOME="/home/$USER/"
 PATH1="/home/$USER/.i3/"
 PATH2="/home/$USER/.config/i3/"
 
-echo "Install i3 config directory to:"
+echo "Install i3 directory to:"
 echo "1. /home/$USER/.i3/"
 echo "2. /home/$USER/.config/i3/"
-echo "3. cancel"
-read -p "Coice[1,2,3]? " choice
+echo "3. skip"
+echo "4. cancel"
+read -p "Choice[1,2,3]? " choice
 case $choice in
 	1 ) 
 		o1
@@ -90,11 +92,18 @@ case $choice in
 		o2
 		;;
 	3 ) 
-		echo "Exiting.." && exit
+		echo "Skipping.."
+		;;
+	4 )	
+		echo "Exiting.."
+		exit
 		;;
 	* ) 
 		echo "Invalid"
 		;;
 esac
 
-
+echo "Replacing .bashrc in $HOME.."
+rm -f /home/$USER/.bashrc
+cp .bashrc /home/$USER/.bashrc
+echo "done"
