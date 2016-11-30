@@ -1,32 +1,37 @@
 #!/bin/bash
 
+# Variables
+USER="$(whoami)"
+PATH1="/home/$USER/.i3/"
+PATH2="/home/$USER/.config/i3/"
 
 function o1 {
 if [ -d $PATH1 ] 
 then
-	echo "Directory $PATH1 already exists!"
-	read -p "Do you want to overwrite this directory[Yes/No]? " choice
+	printf "\e[1m\e[31m:: \e[39mDirectory $PATH1 already exists!\e[0m\n"
+	printf "\e[1m\e[34m:: \e[39mDo you want to overwrite this directory? [y/N] \e[0m"
+	read choice
 	case $choice in
 		Yes|yes|y|Y ) 
-			echo "Removing $PATH1"
+			printf "Removing $PATH1.. "
 			rm -rf $PATH1
-			echo "done"
-			echo "Copying .i3/ to $PATH1"
+			printf "done\n"
+			printf "Copying .i3/ to $PATH1.. "
 			cp -r .i3 $PATH1
-			echo "done"
+			printf "done\n"
 			;;
 		No|no|n|N ) 
-			echo "Exiting.."
+			printf "Skipping..\n"
 			;;
 		* ) 
-			echo "Exiting.."
+			printf "Skipping..\n"
 			;;
 	
 	esac
 else
-	echo "Copying .i3/ to $PATH1.."
+	printf "Copying .i3/ to $PATH1.. "
 	cp -r .i3 $PATH1
-	echo "done"
+	printf "done\n"
 fi
 
 }
@@ -34,56 +39,51 @@ fi
 function o2 {
 if [ ! -d /home/$USER/.config ]
 then
-	echo "Creating /home/$USER/.config/.."
+	printf "Creating /home/$USER/.config/.. "
 	mkdir /home/$USER/.config/
-	echo "done"
+	printf "done\n"
 fi
 	
 	
 	
 if [ -d $PATH2 ] 
 then
-	echo "Directory $PATH2 already exists!"
-	read -p "Do you want to overwrite this directory[Yes/No]? " choice
+	printf "\e[1m\e[31m:: \e[39mDirectory $PATH2 already exists!\e[0m\n"
+	printf "\e[1m\e[34m:: \e[39mDo you want to overwrite this directory? [y/N] \e[0m"
+	read choice
 	case $choice in
 		Yes|yes|y|Y ) 
-			echo "Removing $PATH2.."
+			printf "Removing $PATH2.. "
 			rm -rf $PATH2
-			echo "done"
-			echo "Copying .i3/ to $PATH2.."
+			printf "done\n"
+			printf "Copying .i3/ to $PATH2.. "
 			cp -r .i3 $PATH2
-			echo "done"
+			printf "done\n"
 			;;
 		No|no|n|N ) 
-			echo "Exiting.."
+			printf "Skipping..\n"
 			;;
 		* ) 
-			echo "Exiting.."
+			printf "Skipping..\n"
 			;;
 	
 	esac
 else
-	echo "Copying .i3/ to $PATH2"
+	printf "Copying .i3/ to $PATH2.. "
 	cp -r .i3 $PATH2
-	echo "done"
+	printf "done\n"
 fi
 
 }
 
-
-
-# Variables
-USER="$(whoami)"
-HOME="/home/$USER/"
-PATH1="/home/$USER/.i3/"
-PATH2="/home/$USER/.config/i3/"
-
-echo "Install i3 directory to:"
-echo "1. /home/$USER/.i3/"
-echo "2. /home/$USER/.config/i3/"
-echo "3. skip"
-echo "4. cancel"
-read -p "Choice[1,2,3]? " choice
+function i3Diag {
+printf "\e[94m\e[1m:: \e[39mInstall i3 directory to:\e[0m\n"
+printf "   1. /home/$USER/.i3/\n"
+printf "   2. /home/$USER/.config/i3/\n"
+printf "   3. skip\n"
+printf "   4. cancel\n"
+printf "\e[94m\e[1m:: \e[39mEnter a selection (1-4): \e[0m"
+read choice
 case $choice in
 	1 ) 
 		o1
@@ -92,18 +92,29 @@ case $choice in
 		o2
 		;;
 	3 ) 
-		echo "Skipping.."
+		printf "Skipping..\n"
 		;;
 	4 )	
-		echo "Exiting.."
+		printf "Exiting..\n"
 		exit
 		;;
 	* ) 
-		echo "Invalid"
+		printf "Invalid\n"
+		i3Diag
 		;;
 esac
+}
 
-echo "Replacing .bashrc in $HOME.."
+function bashrc {
+printf "Removing /home/$USER/.bashrc.. " 
 rm -f /home/$USER/.bashrc
+printf "done\n"
+printf "Copying .bashrc to /home/$USER/.bashrc.. "
 cp .bashrc /home/$USER/.bashrc
-echo "done"
+printf "done\n"
+}
+
+i3Diag
+bashrc
+
+
