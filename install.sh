@@ -34,24 +34,24 @@ fi
 function o2 {
 if [ ! -d /home/$USER/.config ]
 then
-	echo "Creating /home/$USER/.config/"
+	echo "Creating /home/$USER/.config/.."
 	mkdir /home/$USER/.config/
-
+	echo "done"
 fi
 	
 	
 	
-if [ -d /home/$USER/.config/i3 ] 
+if [ -d $PATH2 ] 
 then
-	echo "Directory already exists!"
+	echo "Directory $PATH2 already exists!"
 	read -p "Do you want to overwrite this directory[Yes/No]? " choice
 	case $choice in
 		Yes|yes|y|Y ) 
-			echo "Removing /home/$USER/.i3.."
-			rm -rf /home/$USER/.i3
+			echo "Removing $PATH2.."
+			rm -rf $PATH2
 			echo "done"
-			echo "Copying .i3/ to /home/$USER/.i3.."
-			cp -r .i3 /home/$USER/.i3
+			echo "Copying .i3/ to $PATH2.."
+			cp -r .i3 $PATH2
 			echo "done"
 			;;
 		No|no|n|N ) 
@@ -63,8 +63,8 @@ then
 	
 	esac
 else
-	echo "Copying .i3/ to /home/$USER/.i3.."
-	cp -r .i3 /home/$USER/.i3
+	echo "Copying .i3/ to $PATH2"
+	cp -r .i3 $PATH2
 	echo "done"
 fi
 
