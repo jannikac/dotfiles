@@ -3,8 +3,7 @@
 These are my personal dot/config files.
 Feel free to use them if you want.
 
-# Install Script
-What does the install script do
+# Setup Script.
+The setup script is for my personal use only. You can use it if you want.
 
-- Replaces ~/.config/i3 with i3/
-- Replaces ~/.bashrc with .bashrc
+However, I am not responsible for broken systems/ lost files
