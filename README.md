@@ -6,5 +6,5 @@ Feel free to use them if you want.
 # Install Script
 What does the install script do
 
-- Copies the .i3 directory to a specified location.
-- Removes old .bashrc and copies new .bashrc
+- Replaces ~/.config/i3 with i3/
+- Replaces ~/.bashrc with .bashrc
