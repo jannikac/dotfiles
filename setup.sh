@@ -56,7 +56,7 @@ function install {
 	printf "removing /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. "
 	rm /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
 	printf "done\n"
-	printf "copying dmenuExtended_preferences.txt to /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.."
+	printf "copying dmenuExtended_preferences.txt to /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. " 
 	cp dmenuExtended_preferences.txt /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
 	printf "done\n"
 	
