@@ -190,7 +190,8 @@ bar {
 
 # Start dmenu
 
-bindsym $mod+d exec dmenu_run -fn Sans -l 4 -p "run" -nb "$bg-color" -nf "$text-color" -sb "$bg-color" -sf "#9575cd"
+bindsym $mod+d exec dmenu_extended_run
+#bindsym $mod+d exec dmenu_run -fn Sans -l 4 -p "run" -nb "$bg-color" -nf "$text-color" -sb "$bg-color" -sf "#9575cd"
 
 
 # Autostart

@@ -17,7 +17,7 @@ then
 			rm -rf $PATH1
 			printf "done\n"
 			printf "Copying .i3/ to $PATH1.. "
-			cp -r .i3 $PATH1
+			cp -r i3 $PATH1
 			printf "done\n"
 			;;
 		No|no|n|N ) 
@@ -30,7 +30,7 @@ then
 	esac
 else
 	printf "Copying .i3/ to $PATH1.. "
-	cp -r .i3 $PATH1
+	cp -r i3 $PATH1
 	printf "done\n"
 fi
 
@@ -57,7 +57,7 @@ then
 			rm -rf $PATH2
 			printf "done\n"
 			printf "Copying .i3/ to $PATH2.. "
-			cp -r .i3 $PATH2
+			cp -r i3 $PATH2
 			printf "done\n"
 			;;
 		No|no|n|N ) 
@@ -70,7 +70,7 @@ then
 	esac
 else
 	printf "Copying .i3/ to $PATH2.. "
-	cp -r .i3 $PATH2
+	cp -r i3 $PATH2
 	printf "done\n"
 fi
 

@@ -10,4 +10,3 @@ PS1="\[\033[38;5;10m\]\u@\h\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\
 
 # Aliases
 alias ls='ls --color=auto'
-alias leagueoflegends="/home/jannik/Scripts/leagueoflegends.sh"
