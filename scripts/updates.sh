@@ -1,6 +1,6 @@
 #!/bin/sh
 
-official=$(pacman -Qu | wc -l)
+official=$(sudo pacman -Sy | pacman -Qu | wc -l)
 aur=$(cower -u | wc -l)
 
 
