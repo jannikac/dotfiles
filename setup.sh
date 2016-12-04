@@ -42,6 +42,14 @@ function install {
 	cp .bashrc /home/$USER/.bashrc
 	printf "done\n"
 	
+	# replacing ~/.config/dmenu-extended/config/dmenuExtended_preferences.txt with dmenuExtended_preferences.txt
+	printf "removing /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. "
+	rm /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
+	printf "done\n"
+	printf "copying dmenuExtended_preferences.txt to /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. " 
+	cp dmenuExtended_preferences.txt /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
+	printf "done\n"
+	
 	# copying scripts/lol.sh to bin/lol
 	printf "copying scripts/lol.sh to bin/lol.. "
 	sudo cp scripts/lol.sh /bin/lol
@@ -52,12 +60,9 @@ function install {
 	sudo cp scripts/updates.sh /usr/lib/i3blocks/updates
 	printf "done\n"
 
-	# replacing ~/.config/dmenu-extended/config/dmenuExtended_preferences.txt with dmenuExtended_preferences.txt
-	printf "removing /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. "
-	rm /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
-	printf "done\n"
-	printf "copying dmenuExtended_preferences.txt to /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. " 
-	cp dmenuExtended_preferences.txt /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
+	# copying x11/* to /etc/X11/xorg.conf.d/
+	printf "copying x11/* to /etc/X11/xorg.conf.d/.. "
+	sudo cp x11/* /etc/X11/xorg.conf.d/
 	printf "done\n"
 	
 	#removing temporary file
