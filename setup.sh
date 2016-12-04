@@ -60,9 +60,9 @@ function install {
 	sudo cp scripts/updates.sh /usr/lib/i3blocks/updates
 	printf "done\n"
 
-	# copying x11/* to /etc/X11/xorg.conf.d/
+	# copying X11/* to /etc/X11/xorg.conf.d/
 	printf "copying x11/* to /etc/X11/xorg.conf.d/.. "
-	sudo cp x11/* /etc/X11/xorg.conf.d/
+	sudo cp X11/* /etc/X11/xorg.conf.d/
 	printf "done\n"
 	
 	#removing temporary file
