@@ -123,7 +123,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Firefox"] $workspace2
 assign [class="TeamSpeak 3"] $workspace4
-assign [class="Franz"] $workspace4
+assign [class="whats-app-nativefier-7bbd2c"] $workspace4
 assign [class="Gmpc"] $workspace10
 
 # reload the configuration file
@@ -198,6 +198,7 @@ bindsym $mod+d exec dmenu_extended_run
 # Autostart
 exec_always feh --bg-scale /home/jannik/Pictures/Wallpaper/Nature/nature4.jpg
 exec firefox
+exec whatsapp-web-desktop
 exec mopidy
 exec gmpc
 exec teamspeak3
