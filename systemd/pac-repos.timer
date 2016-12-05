@@ -1,0 +1,10 @@
+[Unit]
+Description=Executes pac-repos.service every 15 minutes
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=15min
+Unit=pac-repos.service
+
+[Install]
+WantedBy=multi-user.target

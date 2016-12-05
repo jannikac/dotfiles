@@ -1,0 +1,7 @@
+[Unit]
+Description=Updates pacman repositories
+
+[Service]
+Type=simple
+ExecStartPre=/bin/echo "Updating pacman repositories.."
+ExecStart=/bin/pacman -Sy
