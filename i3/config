@@ -123,6 +123,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 assign [class="Firefox"] $workspace2
 assign [class="TeamSpeak 3"] $workspace4
+assign [class="Franz"] $workspace4
 assign [class="Gmpc"] $workspace10
 
 # reload the configuration file

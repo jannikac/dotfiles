@@ -50,9 +50,9 @@ function install {
 	cp dmenuExtended_preferences.txt /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
 	printf "done\n"
 	
-	# copying scripts/lol.sh to bin/lol
-	printf "copying scripts/lol.sh to bin/lol.. "
-	sudo cp scripts/lol.sh /bin/lol
+	# copying scripts/lol.sh to /usr/local/bin/lol
+	printf "copying scripts/lol.sh to /usr/local/bin/lol.. "
+	sudo cp scripts/lol.sh /usr/local/bin/lol
 	printf "done\n"
 
 	# copying scripts/updates.sh to /usr/lib/i3blocks/updates
