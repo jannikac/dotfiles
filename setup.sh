@@ -50,12 +50,15 @@ function install {
 	cp dmenuExtended_preferences.txt /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
 	printf "done\n"
 	
-	# copying systemd/* to /etc/systemd/system/ and enabling pac-repos.timer
+	# copying systemd/* to /etc/systemd/system/ and enabling pac-repos.timer and reflector.timer
 	printf "copying systemd/* to /etc/systemd/system/.. "
 	sudo cp systemd/* /etc/systemd/system/
 	printf "done\n"
 	printf "enabling pac-repos.timer.. "
 	sudo systemctl enable pac-repos.timer
+	printf "done\n"
+	printf "enabling reflector.timer.. "
+	sudo systemctl enable reflector.timer
 	printf "done\n"
 
 	# copying scripts/lol.sh to /usr/local/bin/lol
