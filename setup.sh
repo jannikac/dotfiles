@@ -13,9 +13,9 @@ USER=$(whoami)
 
 function help {
 	printf "
-	Usage: install.sh [OPTION]
+	Usage: setup.sh [OPTION]
 	
-  	-h, --help		prints this menu
+  	-h, --help		prints this
   	-i, --install		installs files
 
 "
