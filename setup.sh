@@ -17,6 +17,7 @@ function help {
 	
   	-h, --help		prints this
   	-i, --install		installs files
+	-r, --remove		uninstalls files
 
 "
 }
@@ -34,7 +35,10 @@ function install {
 	cp -r i3/ /home/$USER/.config/i3
 	printf "done\n"
 	
-	# replacing ~/.bashrc with .bashrc
+	# replacing ~/.bashrc with .bashrc and backing up old .bashrc
+	printf "backing up /home/$USER/.bashrc.."
+	cp /home/$USER/.bashrc /home/$USER/.bashrc.old
+	printf "done\n"
 	printf "removing /home/$USER/.bashrc.. "
 	rm /home/$USER/.bashrc
 	printf "done\n"
@@ -81,12 +85,69 @@ function install {
 
 }
 
+function remove {
+	# touching temporary file to gain sudo priviliges
+	sudo touch .tmp
+	
+	# removing ~/.config/i3
+	printf "removing /home/$USER/.config/i3/.. "
+	rm /home/$USER/.config/i3/ -rf
+	printf "done\n"
+	
+	# restoring original .bashrc
+	printf "restoring original .bashrc"
+	mv /home/$USER/.bashrc.old /home/$USER/.bashrc
+	printf "done\n"
+	
+	# removing ~/.config/dmenu-extended/config/dmenuExtended_preferences.txt
+	printf "removing /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt.. "
+	rm /home/$USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
+	printf "done\n"
+
+	# removing /etc/systemd/system/pac-repos.timer and /etc/systemd/system/reflector.timer and disabling them
+	
+	printf "disabling pac-repos.timer and reflector.timer"
+	sudo systemctl disable pac-repos.timer
+	sudo systemctl disable reflector.timer
+	printf "done\n"
+	
+	printf "removing /etc/systemd/system/pac-repos.timer and /etc/systemd/system/reflector.timer and their service files"
+	sudo rm /etc/systemd/system/pac-repos.timer
+	sudo rm /etc/systemd/system/pac-repos.service
+	sudo rm /etc/systemd/system/reflector.timer
+	sudo rm /etc/systemd/system/reflector.service
+	printf "done\n"
+
+	# removing /usr/local/bin/lol
+	printf "removing /usr/local/bin/lol.. "
+	sudo rm /usr/local/bin/lol
+	printf "done\n"
+
+	# removing /usr/lib/i3blocks/updates
+	printf "removing /usr/lib/i3blocks/updates.. "
+	sudo rm /usr/lib/i3blocks/updates
+	printf "done\n"
+
+	# removing /etc/X11/xorg.conf.d/00-keyboard.conf and /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
+	printf "removing /etc/X11/xorg.conf.d/00-keyboard.conf and /etc/X11/xorg.conf.d/50-mouse-acceleration.conf"
+	sudo rm /etc/X11/xorg.conf.d/00-keyboard.conf
+	sudo rm /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
+	printf "done\n"
+	
+	#removing temporary file
+	rm .tmp -f
+
+}
+
 case $arg1 in
 	--help|-h )
 		help
 		;;
 	--install|-i) 
 		install
+		;;
+	--remove|-r)
+		remove
 		;;
 	* )
 		help
