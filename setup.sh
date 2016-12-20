@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ###################################################################################
 
@@ -23,6 +23,15 @@ function help {
 
 function install {
 	
+	# escalating to root priviliges
+	sudo -i
+
+	# checking if user is root
+	if ! [ $(id -u) = 0 ]; then
+		printf "You cannot perform this operation unless you are root.\n"
+		exit
+	fi
+
 	# replacing ~/.config/i3 with i3/
 	rm /home/$USER/.config/i3/ -rfv
 	cp -rv i3/ /home/$USER/.config/i3
@@ -47,6 +56,9 @@ function install {
 
 	# copying X11/* to /etc/X11/xorg.conf.d/
 	cp -v X11/* /etc/X11/xorg.conf.d/
+
+	# exiting root
+	exit
 	
 
 }
@@ -84,10 +96,7 @@ function remove {
 	
 }
 
-if ! [ $(id -u) = 0 ]; then
-	printf "Please run this script as root.\n"
-	exit
-fi
+
 
 case $1 in
 	--help|-h )
