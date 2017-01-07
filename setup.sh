@@ -48,7 +48,6 @@ started install..\n"
 	
 	# copying systemd/* to /etc/systemd/system/ and enabling pac-repos.timer and reflector.timer
 	cp -v --remove-destination systemd/* /etc/systemd/system/
-	systemctl enable pac-repos.timer
 	systemctl enable reflector.timer
 
 	# copying scripts/lol.sh to /usr/local/bin/lol
