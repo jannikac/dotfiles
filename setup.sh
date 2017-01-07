@@ -41,11 +41,9 @@ started install..\n"
 	cp -v --remove-destination $USER/.bashrc $USER/.bashrc.old
 	cp -v --remove-destination .bashrc $USER/.bashrc
 	
-	# replacing ~/.config/dmenu-extended/config/dmenuExtended_preferences.txt with dmenuExtended_preferences.txt
-	if ! cp -v --remove-destination dmenuExtended_preferences.txt $USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt; then
-	printf "\e[31mError:\e[39m dmenuExtended probrably not installed.\n"
-	fi
-	
+	# installing rofi config
+	cp -rv rofi/config $USER/.config/
+
 	# copying systemd/* to /etc/systemd/system/ and enabling pac-repos.timer and reflector.timer
 	cp -v --remove-destination systemd/* /etc/systemd/system/
 	systemctl enable reflector.timer
