@@ -1,7 +1,7 @@
 ! "Enabled modi" Set from: Default
 rofi.modi:                           run
 ! "Window width" Set from: Default
-rofi.width:                          100%
+rofi.width:                          80%
 ! "Number of lines" Set from: Default
 rofi.lines:                          15
 ! "Number of columns" Set from: Default
