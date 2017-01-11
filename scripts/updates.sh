@@ -1,6 +1,6 @@
 #!/bin/sh
 
 aur=$(cower -u | wc -l)
+official=$(checkupdates | wc -l)
 
-
-printf "$aur"
+printf "$official ($aur)"
