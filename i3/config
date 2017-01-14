@@ -125,6 +125,7 @@ assign [class="Firefox"] $workspace2
 assign [class="TeamSpeak 3"] $workspace4
 assign [class="whats-app-nativefier-7bbd2c"] $workspace4
 assign [class="Gmpc"] $workspace10
+for_window [class="Lazarus"] floating enable border
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
