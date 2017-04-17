@@ -203,6 +203,5 @@ exec_always feh --bg-scale /home/jannik/Pictures/Wallpaper/space.jpg
 exec firefox
 exec whatsapp-web-desktop
 exec mopidy
-exec gmpc
 exec teamspeak3
 exec compton
