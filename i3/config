@@ -199,7 +199,7 @@ bar {
 bindsym $mod+d exec rofi -show
 
 # Autostart
-exec_always feh --bg-scale /home/jannik/Pictures/Wallpaper/Nature/nature4.jpg
+exec_always feh --bg-scale /home/jannik/Pictures/Wallpaper/space.jpg
 exec firefox
 exec whatsapp-web-desktop
 exec mopidy
