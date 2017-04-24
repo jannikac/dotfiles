@@ -205,3 +205,4 @@ exec whatsapp-web-desktop
 exec mopidy
 exec teamspeak3
 exec compton
+exec gmpc
