@@ -43,7 +43,6 @@ bindsym $mod+Shift+q kill
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
 bindsym $mod+odiaeresis focus right
 
 # alternatively, you can use the cursor keys:
@@ -86,6 +85,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# lock the screen
+bindsym $mod+l exec ~/.local/bin/lock.sh
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -130,6 +132,7 @@ assign [class="TeamSpeak 3"] $workspace4
 assign [class="whats-app-nativefier-7bbd2c"] $workspace4
 assign [class="Gmpc"] $workspace10
 for_window [class="Lazarus"] floating enable border
+for_window [workspace=$workspace3] floating enable border
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,10 +202,6 @@ bar {
 bindsym $mod+d exec rofi -show
 
 # Autostart
-exec_always feh --bg-scale /home/jannik/Pictures/Wallpaper/space.jpg
 exec firefox
-exec whatsapp-web-desktop
-exec mopidy
 exec teamspeak3
-exec compton
-exec gmpc
+exec xautolock -time 15 -locker '~/.local/bin/lock.sh' &
