@@ -15,7 +15,7 @@ function help {
 	Usage: setup.sh [OPTION]
 	
   	-h, --help		prints this
-  	-i, --install		installs files
+	-i, --install		installs files (OVERWRITES EXISTING FILES)
 	-r, --remove		uninstalls files
 "
 }
@@ -34,7 +34,7 @@ started install..\n"
 		mkdir -v /etc/X11/xorg.conf.d/
 	fi
 
-	# replacing ~/.config/i3 with i3/
+	# installing i3/config and i3/i3block.conf
 	cp -rv --remove-destination i3/* $USER/.config/i3/
 	
 	# backing up ~/-bashrc and installing ~/.bashrc
@@ -43,13 +43,6 @@ started install..\n"
 	
 	# installing rofi config
 	cp -rv rofi/config $USER/.config/
-
-	# copying systemd/* to /etc/systemd/system/ and enabling pac-repos.timer and reflector.timer
-	cp -v --remove-destination systemd/* /etc/systemd/system/
-	systemctl enable reflector.timer
-
-	# copying scripts/lol.sh to /usr/local/bin/lol
-	cp -v --remove-destination scripts/lol.sh /usr/local/bin/lol
 
 	# copying scripts/updates.sh to /usr/lib/i3blocks/updates
 	if ! cp -v --remove-destination scripts/updates.sh /usr/lib/i3blocks/updates; then
@@ -74,22 +67,6 @@ started remove..\n"
 	# restoring original .bashrc
 	mv -v $USER/.bashrc.old $USER/.bashrc
 	
-	# removing ~/.config/dmenu-extended/config/dmenuExtended_preferences.txt
-	rm -v $USER/.config/dmenu-extended/config/dmenuExtended_preferences.txt
-
-	# removing /etc/systemd/system/pac-repos.timer and /etc/systemd/system/reflector.timer and disabling them
-	
-	systemctl disable pac-repos.timer
-	systemctl disable reflector.timer
-	
-	rm -v /etc/systemd/system/pac-repos.timer
-	rm -v /etc/systemd/system/pac-repos.service
-	rm -v /etc/systemd/system/reflector.timer
-	rm -v /etc/systemd/system/reflector.service
-
-	# removing /usr/local/bin/lol
-	rm -v /usr/local/bin/lol
-
 	# removing /usr/lib/i3blocks/updates
 	rm -v /usr/lib/i3blocks/updates
 
