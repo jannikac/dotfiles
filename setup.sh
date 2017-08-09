@@ -34,6 +34,13 @@ started install..\n"
 		mkdir -v /etc/X11/xorg.conf.d/
 	fi
 
+	if ! [ -d "$USER/.local/bin" ]; then
+		mkdir -v $USER/.local/bin
+	fi
+
+	# installing local/bin
+	cp -rv --remove-destination local/bin $USER/.local/bin
+
 	# installing i3/config and i3/i3block.conf
 	cp -rv --remove-destination i3/* $USER/.config/i3/
 	
