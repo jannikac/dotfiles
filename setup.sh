@@ -35,9 +35,9 @@ started install..\n"
 	fi
 
 	# replacing ~/.config/i3 with i3/
-	cp -rv --remove-destination i3/ $USER/.config/i3
+	cp -rv --remove-destination i3/* $USER/.config/i3/
 	
-	# replacing ~/.bashrc with .bashrc and backing up old .bashrc
+	# backing up ~/-bashrc and installing ~/.bashrc
 	cp -v --remove-destination $USER/.bashrc $USER/.bashrc.old
 	cp -v --remove-destination .bashrc $USER/.bashrc
 	
