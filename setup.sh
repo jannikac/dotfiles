@@ -9,6 +9,29 @@
 
 USER=$(getent passwd $SUDO_USER | cut -d: -f6)
 
+# source files
+source[0]=".config/i3/config"
+source[1]=".config/i3/i3blocks.conf"
+source[2]=".config/rofi/config"
+source[3]=".bashrc"
+source[4]=".Xresources"
+
+source[5]="usr/lib/i3blocks/updates"
+source[6]="etc/X11/xinit/xinitrc.d/monitorsetup.sh"
+source[7]="etc/X11/xorg.conf.d/00-keyboard.conf"
+source[8]="etc/X11/xorg.conf.d/50-mouse-acceleration.conf"
+
+# destination files
+dest[0]="$HOME/${source[0]}"
+dest[1]="$HOME/${source[1]}"
+dest[2]="$HOME/${source[2]}"
+dest[3]="$HOME/${source[3]}"
+dest[4]="$HOME/${source[4]}"
+
+dest[5]="/${source[5]}"
+dest[6]="/${source[6]}"
+dest[7]="/${source[7]}"
+dest[8]="/${source[8]}"
 
 function help {
 	printf "
@@ -22,45 +45,19 @@ function help {
 
 function install {
 	
-	printf "
-started install..\n"
+	printf "\nstarted install..\n\n"
 	
-	# making directories
-	if ! [ -d "$USER/.config/" ]; then
-		mkdir -v $USER/.config
-	fi
-
-	if ! [ -d "/etc/X11/xorg.conf.d/" ]; then
-		mkdir -v /etc/X11/xorg.conf.d/
-	fi
-
-	if ! [ -d "$USER/.local/bin" ]; then
-		mkdir -v $USER/.local/bin
-	fi
-
-	# installing local/bin
-	cp -rv --remove-destination local/bin $USER/.local/bin
-
-	# installing i3/config and i3/i3block.conf
-	cp -rv --remove-destination i3/* $USER/.config/i3/
 	
-	# backing up ~/-bashrc and installing ~/.bashrc
-	cp -v --remove-destination $USER/.bashrc $USER/.bashrc.old
-	cp -v --remove-destination .bashrc $USER/.bashrc
-	
-	# installing rofi config
-	cp -rv rofi/config $USER/.config/
+	# copies new files to destination
+	i=0
+	while [ $i -lt ${#source[*]} ]; do
+		rsync -av --delete ${source[$i]} ${dest[$i]}
+		i=$(( $i + 1 ));
+	done
+		
 
-	# copying scripts/updates.sh to /usr/lib/i3blocks/updates
-	if ! cp -v --remove-destination scripts/updates.sh /usr/lib/i3blocks/updates; then
-	printf "\e[31mError:\e[39m i3blocks probrably not installed.\n"
-	fi
 
-	# copying X11/* to /etc/X11/xorg.conf.d/
-	cp  -v --remove-destination X11/* /etc/X11/xorg.conf.d/
-
-	printf "finished install!\n
-"
+	printf "\nfinished install!\n"
 }
 
 function remove {
@@ -85,10 +82,10 @@ started remove..\n"
 "	
 }
 
-if ! [ $(id -u) = 0 ]; then
-	printf "You cannot perform this operation unless you are root.\n"
-	exit
-fi
+#if ! [ $(id -u) = 0 ]; then
+#	printf "You cannot perform this operation unless you are root.\n"
+#	exit
+#fi
 
 case $1 in
 	--help|-h )

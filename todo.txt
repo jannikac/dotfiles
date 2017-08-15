@@ -1,0 +1,4 @@
+TODO:
+- Copy permissions #done with chmod
+- Update option -r/--remove
+- mv errors
