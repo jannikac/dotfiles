@@ -205,4 +205,4 @@ bindsym $mod+d exec rofi -show
 exec firefox
 exec feh --bg-scale Pictures/nature.jpg
 exec teamspeak3
-exec xautolock -time 15 -locker 'physlock' &
+exec xautolock -time 15 -locker physlock &
