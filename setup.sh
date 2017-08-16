@@ -3,10 +3,15 @@
 ###################################################################################
 
 #DISCLAIMER: THIS SCRIPT IS FOR MY PERSONAL USE ONLY I WILL NOT TAKE RESPONSIBILITY
-#FOR BROKEN SYSTEMS/ LOST CONFIGURATION0S
+#FOR BROKEN SYSTEMS/ LOST CONFIGURATIONS
 
 ###################################################################################
 
+# required dependencies
+reqdep=(rsync printf)
+
+# optional dependencies
+opdep=(rofi i3 i3blocks xrandr xinit firefox feh teamspeak3 xautolock physlock urxvt)
 
 # source files
 source[0]=".config/i3/config"
@@ -39,16 +44,85 @@ function help {
   	-h, --help		prints this
 	-i, --install		installs files (OVERWRITES EXISTING FILES)
 	-r, --remove		uninstalls files
+	-d, --dependencies	checks for optional and required dependencies
 "
 }
+
+function isPackageInstalled() {
+	which $i &> /dev/null && echo $?
+
+}
+
+function dependencies {
+	# checking required dependencies
+
+
+	printf "Checking required dependencies..\n"
+
+	for i in ${reqdep[@]}
+	do
+		if [ $(isPackageInstalled '$1') ]; then
+			printf "$i..ok\n"
+		else
+			printf "$i..not found\n"
+			printf "ERROR: required package \"$i\" was not found, exiting\n"
+			exit
+		fi
+	done
+	
+	printf "all reqired dependencies installed!\n"
+
+	# checking optional dependencies
+	
+	printf "checking optional dependencies..\n"
+	
+	missingPackage=false
+	
+	for i in ${opdep[@]}
+	do
+		if [ $(isPackageInstalled '$1') ]; then
+			printf "$i.. ok\n"
+		else
+			printf "$i.. not found\n"
+			missingPackage=true
+		fi
+	done
+	
+	if [ "$missingPackage" = false ]; then
+			printf "all optional dependencies installed!\n"
+		fi
+	}
+
+	
 
 function install {
 	
 	# checks if user is running as root		
-if ! [ $(id -u) = 0 ]; then
-	printf "You cannot perform this operation unless you are root.\n"
-	exit
-fi
+	if ! [ $(id -u) = 0 ]; then
+		printf "You cannot perform this operation unless you are root.\n"
+		exit
+	fi
+	
+	dependencies	
+
+	# informing user about not installed package
+
+	if [ "$missingPackage" = true ]; then
+		printf "one or more missing optional dependencies found.\n"
+		printf "continue anyway?(N/y) "
+		read input
+		case $input in
+			Y|y|yes )
+				;;
+			N|n|no )
+				exit
+				;;
+			* )
+				exit
+				;;
+		esac
+	fi
+
 
 	printf "\nstarted install..\n\n"
 
@@ -85,6 +159,9 @@ case $1 in
 		;;
 	--remove|-r)
 		remove
+		;;
+	--depcheck|-d)
+		dependencies
 		;;
 	* )
 		help
