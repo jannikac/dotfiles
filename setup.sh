@@ -17,7 +17,7 @@ opdep=(rofi i3 i3blocks xrandr xinit firefox feh teamspeak3 xautolock physlock u
 source[0]=".config/i3/config"
 source[1]=".config/i3/i3blocks.conf"
 source[2]=".config/rofi/config"
-source[3]=".bashrc"
+source[3]=".zshrc"
 source[4]=".Xresources"
 
 source[5]="usr/lib/i3blocks/updates"
