@@ -11,7 +11,7 @@
 reqdep=(rsync printf)
 
 # optional dependencies
-opdep=(rofi i3 i3blocks xrandr xinit firefox feh teamspeak3 xautolock physlock urxvt)
+opdep=(rofi i3 i3blocks xrandr xinit feh teamspeak3 xautolock physlock urxvt zsh upgrade_oh_my_zsh)
 
 # source files
 source[0]=".config/i3/config"
