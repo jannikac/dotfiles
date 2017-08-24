@@ -15,5 +15,4 @@ alias sshmount='sshfs jannik@jannik-steinbach.de:files ~/mnt/sshfs'
 alias sshunmount='fusermount -u ~/mnt/sshfs'
 
 #Keychain initialize
-/usr/bin/keychain $HOME/.ssh/jannik_key
-source $HOME/.keychain/$HOSTNAME-sh
+eval $(keychain --eval arch@jst.de)
