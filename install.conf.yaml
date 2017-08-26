@@ -1,0 +1,15 @@
+- defaults:
+        link:
+                relink: true
+
+- clean: ['~']
+
+- link:
+        ~/.zshrc: zshrc
+        ~/.Xresources: Xresources
+        ~/.config/i3/config: i3/config
+        ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
+        ~/.config/rofi/config: rofi
+        
+- shell:
+        - [git submodule update --init --recursive, Installing submodules]
