@@ -20,11 +20,11 @@ source[4]="zshrc"
 #source[8]="etc/X11/xorg.conf.d/50-mouse-acceleration.conf"
 
 # destination files
-dest[0]="~/.config/$source[1]"
-dest[1]="~/.config/$source[2]"
-dest[2]="~/.config/rofi/config"
-dest[3]="~/.Xresources"
-dest[4]="~/.zshrc"
+dest[0]="$HOME/.config/$source[1]"
+dest[1]="$HOME/.config/$source[2]"
+dest[2]="$HOME/.config/rofi/config"
+dest[3]="$HOME/.Xresources"
+dest[4]="$HOME/.zshrc"
 
 #dest[5]="/${source[5]}"
 #dest[6]="/${source[6]}"
