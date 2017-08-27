@@ -203,7 +203,7 @@ bindsym $mod+d exec rofi -show
 
 # Autostart
 exec firefox
-exec feh --bg-scale Pictures/nature.jpg
+exec feh --bg-scale Pictures/nature.png
 exec teamspeak3
 exec xautolock -time 15 -locker physlock &
 exec compton -b
