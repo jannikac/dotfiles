@@ -84,4 +84,4 @@ alias vim='nvim'
 alias sshmount='sshfs jannik@jannik-steinbach.de:files ~/mnt/sshfs'
 alias sshumount='fusermount -u ~/mnt/sshfs'
 
-eval $(keychain --eval jannik_key)
+eval $(keychain --eval arch@jst.de)
