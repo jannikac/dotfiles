@@ -13,7 +13,6 @@
         ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
         ~/.config/rofi/config: rofi
         ~/.xprofile: xprofile
-        /etc/X11/xinit/xinitrc.d/monitorsetup.sh: X11/monitorsetup.sh
         /etc/X11/xorg.conf.d/00-keyboard.conf: X11/00-keyboard.conf
         /etc/X11/xorg.conf.d/50-mouse-acceleration.conf: X11/50-mouse-acceleration.conf
         /usr/lib/i3blocks/updates: i3/i3blocks-updates
