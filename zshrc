@@ -81,7 +81,5 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 alias ls='ls --color=auto'
 alias vim='nvim'
-alias sshmount='sshfs jannik@jannik-steinbach.de:files ~/mnt/sshfs'
-alias sshumount='fusermount -u ~/mnt/sshfs'
 
 eval $(keychain --eval arch@jst.de)
