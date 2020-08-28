@@ -53,8 +53,11 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey "^[[3~" delete-char
 
+# Load theme
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
+
+# Load plugins
 zplugin load zsh-users/zsh-syntax-highlighting
 zplugin load zsh-users/zsh-autosuggestions
 zplugin load /zsh-users/zsh-completions
