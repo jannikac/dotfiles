@@ -1,4 +1,0 @@
-Host jannik-remote
-  HostName jannik-steinbach.de
-  Port 22
-  IdentityFile ~/.ssh/arch@jst.de
