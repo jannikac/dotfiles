@@ -38,6 +38,9 @@ alias vim='nvim'
 # Add local pip path to PATH
 python3 -m site &> /dev/null && PATH="$PATH:`python3 -m site --user-base`/bin"
 
+# Export LANG veriable to use UTF-8
+export LANG=en_US.UTF-8
+
 # Load completion engine
 autoload -Uz compinit
 compinit
