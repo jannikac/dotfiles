@@ -2,9 +2,9 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities windows-jannik
-zstyle :omz:plugins:ssh-agent lifetime 4h
+#zstyle :omz:plugins:ssh-agent agent-forwarding on
+#zstyle :omz:plugins:ssh-agent identities windows-jannik
+#zstyle :omz:plugins:ssh-agent lifetime 4h
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -64,7 +64,7 @@ zinit light romkatv/powerlevel10k
 zplugin load zsh-users/zsh-syntax-highlighting
 zplugin load zsh-users/zsh-autosuggestions
 zplugin load /zsh-users/zsh-completions
-zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+#zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
