@@ -8,6 +8,8 @@ Nevertheless, I try to keep them as clean and non-WTF as possible, and people ar
 # Npiperelay specific branch
 Download https://github.com/jstarks/npiperelay and put it in the Path.
 ```
+# Install socat
+apt install socat
 # Download
 wget https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip
 # Unzip
