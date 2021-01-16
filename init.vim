@@ -5,18 +5,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Functionalities
 Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'ryanoasis/vim-devicons'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'dense-analysis/ale'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 let g:deoplete#enable_at_startup = 1
 call plug#end()
 
