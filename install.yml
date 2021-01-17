@@ -21,6 +21,7 @@
           - neovim
           - nodejs
           - npm
+          - socat
       become: yes
 
     - name: Create specified directories
@@ -43,3 +44,12 @@
         dest: "{{ home_dir }}/{{ item.key }}"
         state: link
       loop: "{{ links | dict2items }}"
+    
+    - name: Download npiperelay
+      unarchive:
+        src: https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip
+        dest: /tmp
+        remote_src: yes
+    - name: Install npiperelay
+      command: mv /tmp/npiperelay.exe /usr/local/bin/
+      become: yes
