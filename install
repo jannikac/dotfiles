@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ $EUID != 0 ]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+
+os_id=$(sed -n -e 's/^ID=//p' /etc/os-release)
+
+if [ $os_id == 'arch' ]; then
+    pacman -S ansible
+
+elif [ $os_id == 'debian' ]; then
+    apt install ansible
+
+elif [ $os_id == 'ubuntu' ]; then
+    apt install ansible
+fi 
+
+ansible-playbook --ask-become-pass install.yml

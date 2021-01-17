@@ -1,0 +1,45 @@
+---
+
+- name: Install dotfiles
+  connection: local
+  hosts: 127.0.0.1
+  vars:
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    directories:
+      - .config/nvim # neovim directory
+      - .local/share/nvim/site/autoload # vim-plug directory
+    # Format = $HOME/dest:currentdir/source
+    links:
+      .zshrc: zshrc
+      .config/nvim/init.vim: init.vim
+      .tmux.conf: tmux.conf
+
+  tasks:
+    - name: Install packages
+      package:
+        name:
+          - neovim
+          - nodejs
+          - npm
+      become: yes
+
+    - name: Create specified directories
+      file:
+        path: "{{ home_dir }}/{{ item }}"
+        state: directory
+      loop: "{{ directories }}"
+
+    - name: Download vim-plug
+      get_url:
+        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        dest: "{{ home_dir }}/.local/share/nvim/site/autoload/plug.vim"
+    
+    - name: Install Vim Plugins
+      command: nvim +PlugInstall +qall
+
+    - name: Symlink config files to destinations
+      file:
+        src: "{{ playbook_dir }}/{{ item.value }}"
+        dest: "{{ home_dir }}/{{ item.key }}"
+        state: link
+      loop: "{{ links | dict2items }}"
