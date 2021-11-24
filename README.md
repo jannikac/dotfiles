@@ -9,4 +9,5 @@ Nevertheless, I try to keep them as clean and non-WTF as possible, and people ar
 The following packages should be installed
 - neovim
 - starship
-- Vim-Plug
+- vim-plug
+- node
