@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles: Npiperelay specific branch
 
 This is my collection of user/application settings ("dotfiles") and personal scripts. 
 They are mostly adapted to my personal needs, and some scripts make a few assumptions about the environment that may not necessarily be considered "standard", so it is *not recommended* to just copy-paste them as-is.
@@ -12,7 +12,7 @@ The following packages should be installed
 - vim-plug
 - node
 
-# Npiperelay specific branch
+## Npiperelay
 Download https://github.com/jstarks/npiperelay and put it in the Path.
 ```
 # Install socat
@@ -23,9 +23,9 @@ wget https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_w
 unzip npiperelay_windows_amd64.zip
 # Move
 mv npiperelay.exe /usr/local/bin/
-```
-# Make executable
-```
+# make executable
 chmod +x /usr/local/bin/npiperelay.exe
+# create .ssh dir
+mkdir ~/.ssh
 ```
 
