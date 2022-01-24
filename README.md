@@ -17,3 +17,7 @@ unzip npiperelay_windows_amd64.zip
 # Move
 mv npiperelay.exe /usr/local/bin/
 ```
+# Make executable
+```
+chmod +x /usr/local/bin/npiperelay.exe
+```
