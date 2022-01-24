@@ -5,6 +5,13 @@ They are mostly adapted to my personal needs, and some scripts make a few assump
 
 Nevertheless, I try to keep them as clean and non-WTF as possible, and people are invited to take a look at them, get ideas for their own dotfiles, and drop comments, suggestions, questions and bug reports if something seems odd.
 
+## Prerequisites
+The following packages should be installed
+- neovim
+- starship
+- vim-plug
+- node
+
 # Npiperelay specific branch
 Download https://github.com/jstarks/npiperelay and put it in the Path.
 ```
@@ -21,3 +28,4 @@ mv npiperelay.exe /usr/local/bin/
 ```
 chmod +x /usr/local/bin/npiperelay.exe
 ```
+
