@@ -72,16 +72,12 @@ fi
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
+setopt incappendhistory
 
 # Bind CTRL+{leftarrow, rightarrow, backspace}
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey "^[[3~" delete-char
-
-# Load theme
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
 
 # Load plugins
 zplugin load zsh-users/zsh-syntax-highlighting
@@ -91,7 +87,5 @@ zplugin load /zsh-users/zsh-completions
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(starship init zsh)"
 
